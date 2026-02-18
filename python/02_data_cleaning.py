@@ -113,6 +113,10 @@ def remove_invalid_gender(df):
     df = df[~df["gender"].isin(["Unknown", "Invalid"])]
     return df
 
+def remove_unknown_race(df):
+    df = df[df["race"] != "Unknown"]
+    return df
+
 if __name__ == "__main__":
     df = load_data()
     df = replace_question_marks(df)
@@ -122,6 +126,8 @@ if __name__ == "__main__":
     df = impute_diagnoses(df)
     df = format_change(df)
     df = remove_invalid_gender(df)
+    df = remove_unknown_race(df)
+    
     print("Missing values after full cleaning:")
     print(df.isna().sum())
     print("\nFinal shape:", df.shape)
