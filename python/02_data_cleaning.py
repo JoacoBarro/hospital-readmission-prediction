@@ -110,11 +110,15 @@ def format_change(df):
     return df
 
 def remove_invalid_gender(df):
-    df = df[~df["gender"].isin(["Unknown", "Invalid"])]
+    df = df[~df["gender"].isin(["Unknown", "Invalid", "Unknown/Invalid"])]
     return df
 
 def remove_unknown_race(df):
     df = df[df["race"] != "Unknown"]
+    return df
+
+def fix_race_labels(df):
+    df["race"] = df["race"].replace("AfricanAmerican", "African American")
     return df
 
 if __name__ == "__main__":
@@ -127,6 +131,7 @@ if __name__ == "__main__":
     df = format_change(df)
     df = remove_invalid_gender(df)
     df = remove_unknown_race(df)
+    df = fix_race_labels(df)
     
     print("Missing values after full cleaning:")
     print(df.isna().sum())
