@@ -1,0 +1,3 @@
+Change: 0 to "No" - 1 to "Yes"
+Diabetes Med: 0 to "No" - 1 to "Yes"
+Re-Admitted: 0 to "No" - 1 to "Yes"
